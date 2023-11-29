@@ -1,12 +1,14 @@
-{ pkgs ? import <nixpkgs> {}
-, golang ? pkgs.go
-, godep ? pkgs.dep }:
+{ pkgs ? import <nixpkgs> {},
+    golang ? pkgs.go,
+    godep ? pkgs.dep
+}:
 pkgs.stdenv.mkDerivation {
     name = "go-shell";
 
-    buildInputs = [ golang
-                    godep
-                  ];
+    buildInputs = [ 
+        godep
+        golang
+    ];
 
     shellHook = ''
         export GOPATH=`pwd`
